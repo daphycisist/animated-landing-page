@@ -10,10 +10,10 @@ const Testimony = () => {
     const timeline = gsap.timeline({
       defaults: { delay: 0.4, ease: 'power0.out' },
       scrollTrigger: {
-        trigger: '.commitments',
-        start: 'center+=100px 50%',
-
-        toggleActions: 'play none none restart',
+        trigger: '.testimony',
+        start: 'top-=100px 50%',
+        markers: true,
+        toggleActions: 'play none none none',
       },
     });
 
@@ -31,6 +31,22 @@ const Testimony = () => {
         '<0'
       )
       .from(
+        '.testimony-ratings',
+        {
+          opacity: 0,
+          y: '-15',
+        },
+        '<0'
+      )
+      .from(
+        '.testimony-tagline',
+        {
+          opacity: 0,
+          y: '-15',
+        },
+        '<0'
+      )
+      .from(
         '.testimony-content-review',
         {
           opacity: 0,
@@ -38,19 +54,36 @@ const Testimony = () => {
         '<0'
       )
       .from(
-        'testimony-content-user-first',
+        '.chella-first',
         {
           opacity: 0,
+          y: '-10',
         },
         '<0'
       )
       .from(
-        'testimony-content-user-second',
+        '.btn-left',
+        {
+          opacity: 0,
+          x: '-20',
+        },
+        '<0'
+      )
+      .from(
+        '.btn-right',
+        {
+          opacity: 0,
+          x: '-20',
+        },
+        '<0'
+      )
+      .from(
+        '.chella-second',
         {
           opacity: 0,
           y: '-20',
         },
-        '<0'
+        '<0.2'
       );
   });
 
@@ -96,15 +129,15 @@ const Testimony = () => {
             </div>
           </div>
           <div className="testimony-content-btns">
-            <span className="testimony-content-btns-inactive">{'<'}</span>
-            <span className="testimony-content-btns-active">{'>'}</span>
+            <span className="testimony-content-btns-inactive btn-left">{'<'}</span>
+            <span className="testimony-content-btns-active btn-right">{'>'}</span>
           </div>
         </div>
 
-        <div className="testimony-content-user testimony-content-user-first ">
+        <div className="testimony-content-user chell-first ">
           <img src="https://picsum.photos/200/300" alt="random" />
         </div>
-        <div className="testimony-content-user testimony-content-user-second">
+        <div className="testimony-content-user chella-second">
           <img src="https://picsum.photos/200/300" alt="random" />
         </div>
       </div>

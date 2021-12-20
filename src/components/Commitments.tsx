@@ -15,7 +15,7 @@ const Commitments = () => {
         trigger: '.commitments',
         start: 'top-=500px 50%',
 
-        toggleActions: 'play none none restart',
+        toggleActions: 'play none none none',
       },
     });
 
