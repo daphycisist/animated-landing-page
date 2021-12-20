@@ -14,7 +14,7 @@ const Commitments = () => {
       scrollTrigger: {
         trigger: '.commitments',
         start: 'top-=500px 50%',
-        markers: true,
+
         toggleActions: 'play none none restart',
       },
     });

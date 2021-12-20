@@ -13,7 +13,7 @@ const FeatureSection = () => {
       scrollTrigger: {
         trigger: '.feature-card',
         start: 'top-=500px 50%',
-        markers: true,
+
         toggleActions: 'play reset none restart',
       },
     });
@@ -60,7 +60,7 @@ const FeatureSection = () => {
       scrollTrigger: {
         trigger: '.feature-step-wrapper',
         start: 'top-=300px 50%',
-        markers: true,
+
         // scrub: true,
         toggleActions: 'play none none none',
       },

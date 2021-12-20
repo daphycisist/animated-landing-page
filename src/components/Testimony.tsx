@@ -12,7 +12,7 @@ const Testimony = () => {
       scrollTrigger: {
         trigger: '.commitments',
         start: 'center+=100px 50%',
-        markers: true,
+
         toggleActions: 'play none none restart',
       },
     });
@@ -47,8 +47,8 @@ const Testimony = () => {
       .from(
         'testimony-content-user-second',
         {
-            opacity: 0,
-            y: '-20'
+          opacity: 0,
+          y: '-20',
         },
         '<0'
       );
