@@ -9,45 +9,94 @@ const FeatureSection = () => {
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     const timeline = gsap.timeline({
-      defaults: { delay: 1 },
+      defaults: { delay: 0.2 },
       scrollTrigger: {
         trigger: '.feature-card',
-        start: 'top 100%',
+        start: 'top-=500px 50%',
         markers: true,
-        // scrub: true,
-        toggleActions: 'play reset none none',
+        toggleActions: 'play reset none restart',
       },
     });
 
     const items = gsap.utils.toArray('.feature-card');
-    // const tl = gsap.timeline();
 
     items.forEach((item: any) => {
       timeline
-        .from(item.querySelector('.feature-icon'), {
-          opacity: 0,
-          y: -20,
-          delay: 0.1,
-          ease: 'power4',
-          rotate: '-90',
-        })
-        .from(item.querySelector('.feature-header'), {
-          opacity: 0,
-          y: -20,
-          delay: 0.1,
-          ease: 'power4',
-        })
+        .from(
+          item.querySelector('.feature-icon'),
+          {
+            opacity: 0,
+            y: -20,
+            delay: 0.1,
+            ease: 'power4.out',
+            rotate: '-90',
+          },
+          '<.2'
+        )
+        .from(
+          item.querySelector('.feature-header'),
+          {
+            opacity: 0,
+            y: -20,
+            delay: 0.1,
+            ease: 'power4.out',
+          },
+          '<.2'
+        )
         .from(
           item.querySelector('.feature-content'),
           {
             opacity: 0,
             y: -20,
             delay: 0.2,
-            ease: 'power3.out',
+            ease: 'power4.out',
           },
           '<0.3'
         );
     });
+
+    const stepTimeline = gsap.timeline({
+      defaults: { delay: 0.3 },
+      scrollTrigger: {
+        trigger: '.feature-step-wrapper',
+        start: 'top-=300px 50%',
+        markers: true,
+        // scrub: true,
+        toggleActions: 'play none none none',
+      },
+    });
+
+    stepTimeline
+      .from('.feature-step-wrapper', {
+        opacity: 0,
+      })
+      .from(
+        '.step-head-wrapper',
+        {
+          opacity: 0,
+          y: '-30',
+          ease: 'power4.out',
+        },
+        '<.4'
+      )
+      .from(
+        '.step-head-action-btn',
+        {
+          opacity: 0,
+          y: '-20',
+          ease: 'power4.out',
+        },
+        '<0.2'
+      )
+      .from(
+        '.step-content .step-card-info',
+        {
+          y: '-10',
+          opacity: 0,
+          stagger: 0.5,
+        },
+        '<.5'
+      );
   }, []);
   return (
     <SectionWrapper className="feature-wrapper container">
@@ -100,7 +149,7 @@ const FeatureCardsWrapper = styled.div`
 `;
 
 const FeatureStepWrapper = styled.div`
-  margin-top: 10rem;
+  margin: 10rem 0;
   color: white;
   background: black;
   padding: 6rem 4rem;

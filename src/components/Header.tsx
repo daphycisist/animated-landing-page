@@ -3,33 +3,32 @@ import { gsap, Power4 } from 'gsap';
 import React from 'react';
 import styled from 'styled-components';
 import { cardData } from '../utils';
+import Button from './Button';
 import PriceCards from './PriceCards';
 
 const Header = () => {
   React.useEffect(() => {
     const timeline = gsap.timeline({
-      defaults: { duration: 1, ease: Power4.easeOut },
+      defaults: { duration: 1, ease: 'power4.out' },
     });
-
-    const stepCards = gsap.utils.toArray('.step-content');
 
     timeline
       .from('.header-wrapper', { opacity: '#d1d1d1' })
       .set('.app', { autoAlpha: 1 })
-      .from('.logo-icon', { rotate: -45, opacity: 0, ease: Power4.easeOut })
+      .from('.logo-icon', { rotate: -45, opacity: 0, ease: 'power4.out' })
       .from(
         '.heading',
         {
           y: '-10',
           opacity: 0,
-          ease: Power4.easeOut,
+          ease: 'power4.out',
         },
-        // { opacity: 1, ease: Power4.easeOut, y: 0 },
+        // { opacity: 1, ease: 'power4.out', y: 0 },
         '<.01'
       )
       .from(
         '.logo-text',
-        { x: '-0.5rem', opacity: 0, ease: Power4.easeOut },
+        { x: '-0.5rem', opacity: 0, ease: 'power4.out' },
         '<0.2'
       )
       .from(
@@ -111,40 +110,6 @@ const Header = () => {
         { opacity: 1, ease: Power4.easeOut, x: 0 },
         '<.3'
       )
-      .from(
-        '.feature-step-wrapper',
-        {
-          opacity: 0,
-        },
-        '<.1'
-      )
-      .from(
-        '.step-head-wrapper',
-        {
-          opacity: 0,
-          y: '-20',
-          ease: Power4.easeOut,
-        },
-        '<.4'
-      )
-      .from(
-        '.step-head-action-btn',
-        {
-          opacity: 0,
-          y: '-20',
-          ease: Power4.easeOut,
-        },
-        '<0'
-      )
-      .from(
-        '.step-content .step-card-info',
-        {
-          y: '-10',
-          opacity: 0,
-          stagger: 0.5,
-        },
-        '<.5'
-      );
   }, []);
   return (
     <HeaderWapper className="header">
@@ -177,9 +142,10 @@ const Header = () => {
             Buy or deposit crypto with one click and start earning, not just
             saving.
           </p>
-          <button className="top-action-btn top-text">
+          {/* <button className="top-action-btn top-text">
             Get Started <FontAwesomeIcon icon="chevron-right" />
-          </button>
+          </button> */}
+          <Button text="Get Started" className="top-action-btn top-text" />
         </TopTextWrapper>
         <CardSectionWrapper className="card-wrapper">
           <CardNav className="card-nav-left">{'<'}</CardNav>
@@ -315,7 +281,7 @@ const TopTextWrapper = styled.div`
     font-size: 1.2em;
   }
 
-  .top-action-btn {
+  /* .top-action-btn {
     background-color: #fc5304;
     color: white;
     border: none;
@@ -328,9 +294,8 @@ const TopTextWrapper = styled.div`
     margin-top: 3rem;
 
     &:hover {
-      /* transform: translateY(-50px); */
     }
-  }
+  } */
 
   /* display: flex;
   align-items: center */
