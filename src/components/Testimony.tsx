@@ -12,7 +12,7 @@ const Testimony = () => {
       scrollTrigger: {
         trigger: '.testimony',
         start: 'top-=100px 50%',
-        markers: true,
+        // markers: true,
         toggleActions: 'play none none none',
       },
     });
