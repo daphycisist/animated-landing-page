@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import gsap from 'gsap';
+import { gsap, Power4 } from 'gsap';
 import React from 'react';
 import styled from 'styled-components';
 import { cardData } from '../utils';
@@ -8,26 +8,30 @@ import PriceCards from './PriceCards';
 const Header = () => {
   React.useEffect(() => {
     const timeline = gsap.timeline({
-      defaults: { duration: 1, ease: 'power4' },
+      defaults: { duration: 1, ease: Power4.easeOut },
     });
+
+    const stepCards = gsap.utils.toArray('.step-content');
+
     timeline
       .from('.header-wrapper', { opacity: '#d1d1d1' })
       .set('.app', { autoAlpha: 1 })
-      .fromTo(
-        '.logo-icon',
-        { rotate: -45, opacity: 0 },
-        { rotate: 0, opacity: 1 }
-      )
-      .fromTo(
+      .from('.logo-icon', { rotate: -45, opacity: 0, ease: Power4.easeOut })
+      .from(
         '.heading',
         {
           y: '-10',
           opacity: 0,
+          ease: Power4.easeOut,
         },
-        { opacity: 1, ease: 'power4', y: 0 },
+        // { opacity: 1, ease: Power4.easeOut, y: 0 },
         '<.01'
       )
-      .from('.logo-text', { x: '-0.5rem', opacity: 0, ease: 'power4' }, '<0.2')
+      .from(
+        '.logo-text',
+        { x: '-0.5rem', opacity: 0, ease: Power4.easeOut },
+        '<0.2'
+      )
       .from(
         '.nav-links',
         {
@@ -49,7 +53,7 @@ const Header = () => {
         {
           height: 0,
           transformOrigin: 'top',
-          duration: 2.5,
+          duration: 1.5,
         },
         '<.5'
       )
@@ -73,39 +77,73 @@ const Header = () => {
         '.card-wrapper',
         {
           opacity: 0,
-          ease: 'power4',
+          ease: Power4.easeOut,
         },
         '<.5'
       )
       .fromTo(
         '.card-wrapper >:nth-last-child(2)',
         { opacity: 0, y: '-20' },
-        { opacity: 1, ease: 'power4', y: 0 },
+        { opacity: 1, ease: Power4.easeOut, y: 0 },
         '<.2'
       )
       .fromTo(
         '.card-nav-left',
         { opacity: 0, x: '-20' },
-        { opacity: 1, ease: 'power4', x: 0 },
+        { opacity: 1, ease: Power4.easeOut, x: 0 },
         '<.6'
       )
       .fromTo(
         '.card-nav-right',
         { opacity: 0, x: '20' },
-        { opacity: 1, ease: 'power4', x: 0 },
+        { opacity: 1, ease: Power4.easeOut, x: 0 },
         '<0'
       )
       .fromTo(
         '.feature',
         { opacity: 0 },
-        { opacity: 1, ease: 'power4', x: 0 },
+        { opacity: 1, ease: Power4.easeOut, x: 0 },
         '<.2'
       )
       .fromTo(
         '.header-text',
         { opacity: 0, x: '-1rem' },
-        { opacity: 1, ease: 'power4', x: 0 },
+        { opacity: 1, ease: Power4.easeOut, x: 0 },
         '<.3'
+      )
+      .from(
+        '.feature-step-wrapper',
+        {
+          opacity: 0,
+        },
+        '<.1'
+      )
+      .from(
+        '.step-head-wrapper',
+        {
+          opacity: 0,
+          y: '-20',
+          ease: Power4.easeOut,
+        },
+        '<.4'
+      )
+      .from(
+        '.step-head-action-btn',
+        {
+          opacity: 0,
+          y: '-20',
+          ease: Power4.easeOut,
+        },
+        '<0'
+      )
+      .from(
+        '.step-content .step-card-info',
+        {
+          y: '-10',
+          opacity: 0,
+          stagger: 0.5,
+        },
+        '<.5'
       );
   }, []);
   return (
@@ -132,14 +170,14 @@ const Header = () => {
           </AuthLinksWrapper>
         </NavBar>
         <TopTextWrapper>
-          <h3 className="heading">
+          <h3 className="heading top-text">
             Don't just hold, <span>Earn</span>
           </h3>
-          <p className="description-text">
+          <p className="description-text top-text">
             Buy or deposit crypto with one click and start earning, not just
             saving.
           </p>
-          <button className="top-action-btn">
+          <button className="top-action-btn top-text">
             Get Started <FontAwesomeIcon icon="chevron-right" />
           </button>
         </TopTextWrapper>
