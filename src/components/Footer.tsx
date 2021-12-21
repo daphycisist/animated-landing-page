@@ -1,10 +1,30 @@
-import React from 'react';
+import { gsap, ScrollTrigger } from 'gsap/all';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 
 const Footer = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    const timeline = gsap.timeline({
+      defaults: { delay: 0.4 },
+      //   scrollTrigger: {
+      //     trigger: '.footer',
+      //     start: 'top 0%',
+      //     markers: true,
+      //     toggleActions: 'play none none restart',
+      //   },
+    });
+
+    timeline.from('.footer', {
+    //   y: '+10',
+      ease: 'power0.out',
+        opacity: 0,
+      marginTop: '-30'
+    });
+  }, []);
   return (
-    <FooterWrapper className="container">
+    <FooterWrapper className="footer container">
       <div className="links-wrapper">
         <p className="logo-icon">II</p>
         <div className="links">
@@ -51,7 +71,7 @@ const FooterWrapper = styled.section`
 
   .signup {
     margin: 0;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     font-size: 1rem;
   }
 `;

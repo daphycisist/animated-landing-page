@@ -29,21 +29,22 @@ const Partners = () => {
         // delay: .7
       })
       .from(
-        ['.signup-wrapper', '.icons-wrapper'],
-        {
-          x: '-10',
-          opacity: 0,
-          stagger: 0.5,
-        },
-        '<.5'
-      )
-      .from(
-        '.logo',
+        '.signup-wrapper',
         {
           opacity: 0,
           ease: 'power4.out',
         },
         '<.4'
+      )
+      .from(
+        '.logo',
+        {
+          x: '-10',
+          opacity: 0,
+          stagger: 0.5,
+          ease: 'power0.out',
+        },
+        '<0'
       )
       .from(
         '.signup-content-header',
