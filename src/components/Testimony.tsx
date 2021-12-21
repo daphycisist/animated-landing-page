@@ -10,23 +10,29 @@ const Testimony = () => {
     const timeline = gsap.timeline({
       defaults: { delay: 0.4, ease: 'power0.out' },
       scrollTrigger: {
-        trigger: '.testimony',
-        start: 'top-=100px 50%',
-        // markers: true,
-        toggleActions: 'play none none none',
+        trigger: '.testimony-title',
+        start: 'top-=400px 50%',
+        markers: true,
+        toggleActions: 'play none none restart',
       },
     });
 
     timeline
       .from('.testimony-title', {
         opacity: 0,
-        delay: 0,
-        duration: 1,
+        delay: 0.2,
+      })
+      .from('.testimony-content-review', {
+        opacity: 0,
+        delay: 0.2,
+        ease: 'power4.out',
+        duration: 0.5,
       })
       .from(
         '.testimony-heading',
         {
           opacity: 0,
+          delay: 0.2,
         },
         '<0'
       )
@@ -46,13 +52,13 @@ const Testimony = () => {
         },
         '<0'
       )
-      .from(
-        '.testimony-content-review',
-        {
-          opacity: 0,
-        },
-        '<0'
-      )
+      //   .from(
+      //     '.testimony-content-review',
+      //     {
+      //       opacity: 0,
+      //     },
+      //     '>0.4'
+      //   )
       .from(
         '.chella-first',
         {
@@ -62,18 +68,20 @@ const Testimony = () => {
         '<0'
       )
       .from(
-        '.btn-left',
+        '.btn-right',
         {
           opacity: 0,
-          x: '-20',
+          x: '-2rem',
+          delay: 0.2,
         },
         '<0'
       )
       .from(
-        '.btn-right',
+        '.btn-left',
         {
           opacity: 0,
-          x: '-20',
+          x: '2rem',
+          delay: 0.2,
         },
         '<0'
       )
@@ -88,7 +96,7 @@ const Testimony = () => {
   });
 
   return (
-    <TestimonyWrapper className="testimony container">
+    <TestimonyWrapper className="testimony container filler">
       <div className="testimony-header-section">
         <h5 className="testimony-title">Testimony</h5>
         <h1 className="testimony-heading">
@@ -129,12 +137,16 @@ const Testimony = () => {
             </div>
           </div>
           <div className="testimony-content-btns">
-            <span className="testimony-content-btns-inactive btn-left">{'<'}</span>
-            <span className="testimony-content-btns-active btn-right">{'>'}</span>
+            <span className="testimony-content-btns-inactive btn-left">
+              {'<'}
+            </span>
+            <span className="testimony-content-btns-active btn-right">
+              {'>'}
+            </span>
           </div>
         </div>
 
-        <div className="testimony-content-user chell-first ">
+        <div className="testimony-content-user chella-first ">
           <img src="https://picsum.photos/200/300" alt="random" />
         </div>
         <div className="testimony-content-user chella-second">
@@ -260,6 +272,7 @@ const TestimonyWrapper = styled.div`
         }
         &-active {
           background-color: #fc5304;
+          z-index: 1;
         }
       }
 

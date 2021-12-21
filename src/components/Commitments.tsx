@@ -45,9 +45,20 @@ const Commitments = () => {
       )
       .from(['.commitments-content', '.top-sec'], {
         opacity: 0,
-        ease: 'power0.in',
+        ease: 'power0.out',
         y: '-40',
       })
+      
+      .from(
+        '.glass',
+        {
+          opacity: 0,
+          ease: 'power0.out',
+
+        },
+        '<0.05'
+      )
+      
       .from(
         '.update',
         {
@@ -71,7 +82,7 @@ const Commitments = () => {
     <CommitmentsWrapper className="commitments container">
       <ImageContainer>
         <img src={Man} alt="man" className="suit-man" />
-        <GlassContent>
+        <GlassContent className="glass">
           <div className="top-sec">
             <div className="investment-text">Your Investment Secured</div>
             <div className="encrypted-text">
