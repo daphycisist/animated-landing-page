@@ -146,6 +146,7 @@ const SectionWrapper = styled.div``;
 const FeatureCardsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 `;
 
 const FeatureStepWrapper = styled.div`
