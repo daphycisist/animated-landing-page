@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Commitments from './components/Commitments';
 import FeatureSection from './components/FeatureSection';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Testimony from './components/Testimony';
 
@@ -12,6 +13,7 @@ function App() {
       <FeatureSection />
       <Commitments />
       <Testimony />
+      <Footer />
     </div>
   );
 }
