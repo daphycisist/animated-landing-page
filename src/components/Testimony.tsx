@@ -159,7 +159,7 @@ const Testimony = () => {
 
 export default Testimony;
 
-const TestimonyWrapper = styled.div`
+const TestimonyWrapper = styled.section`
   background: black;
   color: white;
   padding-top: 5rem;
