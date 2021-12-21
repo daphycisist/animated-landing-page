@@ -33,7 +33,8 @@ const StepCardWrapper = styled.div`
     font-weight: 500;
     width: 100%;
     display: flex;
-    /* border: 1px solid #979797; */
+    align-items: flex-end;
+    justify-content: end;
 
     &-text {
       background-color: #9b1d01;

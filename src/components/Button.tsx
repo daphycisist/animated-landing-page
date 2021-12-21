@@ -33,4 +33,8 @@ const ButtonWrapper = styled.div`
   gap: 1rem;
   margin-top: 3rem;
   width: max-content;
+
+  &:hover {
+    cursor: pointer;
+    }
 `;
