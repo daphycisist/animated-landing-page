@@ -12,17 +12,19 @@ const PriceCards: React.FC<IPriceCards> = ({
 }) => {
   return (
     <CardWrapper {...rest}>
-      <HeadSection>
-        <div>
-          <p>{name}</p>
-          <p>{abbr}</p>
-        </div>
-        {icon}
-      </HeadSection>
-      <ContentSection>
-        <p>{amount}</p>
-        <p>{change}</p>
-      </ContentSection>
+      <div className="scale-body">
+        <HeadSection>
+          <div>
+            <p>{name}</p>
+            <p>{abbr}</p>
+          </div>
+          {icon}
+        </HeadSection>
+        <ContentSection>
+          <p>{amount}</p>
+          <p>{change}</p>
+        </ContentSection>
+      </div>
     </CardWrapper>
   );
 };
@@ -33,7 +35,7 @@ const CardWrapper = styled.div`
   background: #1d1d1d;
   border: 1px solid #707070;
   padding: 2rem;
-
+  overflow: hidden;
   opacity: 0.7;
 
   &:not(:first-of-type) {
@@ -48,8 +50,10 @@ const CardWrapper = styled.div`
     border-radius: 0 5px 0 0;
   }
 
-  &:hover {
+  .scale-body {
+    &:hover {
       transform: scale(1.1);
+    }
   }
 `;
 
