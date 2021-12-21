@@ -1,4 +1,5 @@
-import React from 'react';
+import { gsap, ScrollTrigger } from 'gsap/all';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {
   DPIConCompany1,
@@ -8,24 +9,79 @@ import {
 import Button from './Button';
 
 const Partners = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    const timeline = gsap.timeline({
+      defaults: { delay: 0.4 },
+      scrollTrigger: {
+        trigger: '.partner-heading',
+        start: 'top-=500px 50%',
+        markers: true,
+        toggleActions: 'play none none restart',
+      },
+    });
+
+    timeline
+      .from('.partner-heading', {
+        opacity: 0,
+        ease: 'power0',
+        // delay: .7
+      })
+      .from(
+        ['.signup-wrapper', '.icons-wrapper'],
+        {
+          x: '-10',
+          opacity: 0,
+          stagger: 0.5,
+        },
+        '<.5'
+      )
+      .from(
+        '.logo',
+        {
+          opacity: 0,
+          ease: 'power4.out',
+        },
+        '<.4'
+      )
+      .from(
+        '.signup-content-header',
+        {
+          opacity: 0,
+          ease: 'power4.out',
+          y: '-20',
+        },
+        '>0.2'
+      )
+      .from(
+        '.signup-content-button',
+        {
+          opacity: 0,
+          ease: 'power4.out',
+          y: '-20',
+        },
+        '<0.2'
+      );
+  }, []);
   return (
     <PartnersWrapper className="container">
       <PartnerWrapper>
-        <h2 className="heading">We Partner With The Best</h2>
+        <h2 className="partner-heading">We Partner With The Best</h2>
         <div className="icons-wrapper">
-          <DPIConCompany2 className="grayed" />
-          <DPIConCompany1 />
-          <DPIConCompany5 />
-          <DPIConCompany1 />
-          <DPIConCompany5 />
+          <DPIConCompany2 className="grayed logo" />
+          <DPIConCompany1 className="logo" />
+          <DPIConCompany5 className="logo" />
+          <DPIConCompany1 className="logo" />
+          <DPIConCompany5 className="logo" />
         </div>
       </PartnerWrapper>
-      <SignupWrapper>
+      <SignupWrapper className="signup-wrapper">
         <div className="signup-content">
           <h1 className="signup-content-header">
             Sign up today and receive your $40 earning bonus
           </h1>
-          <Button text="Get Started" />
+          <Button text="Get Started" className="signup-content-button"/>
         </div>
       </SignupWrapper>
     </PartnersWrapper>
@@ -45,7 +101,7 @@ const PartnerWrapper = styled.div`
   justify-content: space-between;
   margin-bottom: 13rem;
 
-  .heading {
+  .partner-heading {
     position: relative;
 
     &:before {
