@@ -17,7 +17,7 @@ const Partners = () => {
       scrollTrigger: {
         trigger: '.partner-heading',
         start: 'top-=500px 50%',
-        markers: true,
+        // markers: true,
         toggleActions: 'play none none restart',
       },
     });
